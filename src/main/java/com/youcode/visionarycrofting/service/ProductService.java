@@ -15,11 +15,6 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-
-    //public ProductService ( ProductRepository productRepository ) {
-    //    this.productRepository = productRepository;
-    //}
-
     public List< Product> getProducts ( ) {
         return productRepository.findAll ();
     }
@@ -46,42 +41,76 @@ public class ProductService {
         Optional<Product> productOptional = productRepository.findById ( product.getId () );
 
         if (productOptional.isPresent () ){
-            if (!product.getName ().isEmpty () || product.getName () != null) productOptional.get ().setName ( product.getName ());
-            if (!product.getDescription ().isEmpty () || product.getDescription () != null) productOptional.get ().setDescription ( product.getDescription ());
-            if (!product.getCategory ().isEmpty () || product.getCategory () != null) productOptional.get ().setCategory ( product.getCategory ());
-            if (product.getQuantity () != null && productOptional.get ().getQuantity () != null && product.getQuantity () >= 0 ) productOptional.get ().setQuantity ( productOptional.get().getQuantity () + product.getQuantity ());
-            if (productOptional.get().getQuantity () == null  && product.getQuantity () != null && product.getQuantity () >= 0) productOptional.get ().setQuantity ( product.getQuantity ());
-            if (productOptional.get ().getQuantity () >= 0 && product.getQuantity () > 0 ) productOptional.get ().setQuantity ( productOptional.get().getQuantity () + product.getQuantity ());
-            if (product.getMinQuantity () >= 0  || product.getName () != null) productOptional.get ().setMinQuantity ( product.getMinQuantity ());
+            if (!product.getName ().isEmpty ()
+                    || product.getName () != null)
+                productOptional.get ().setName ( product.getName ());
+
+            if (!product.getDescription ().isEmpty ()
+                    || product.getDescription () != null)
+                productOptional.get ().setDescription ( product.getDescription ());
+
+            if (!product.getCategory ().isEmpty ()
+                    || product.getCategory () != null)
+                productOptional.get ().setCategory ( product.getCategory ());
+
+            if (product.getQuantity () != null
+                    && productOptional.get ().getQuantity () != null
+                    && product.getQuantity () >= 0 )
+                productOptional.get ().setQuantity ( productOptional.get().getQuantity () + product.getQuantity ());
+
+            if (productOptional.get().getQuantity () == null
+                    && product.getQuantity () != null
+                    && product.getQuantity () >= 0)
+                productOptional.get ().setQuantity ( product.getQuantity ());
+
+            if (productOptional.get ().getQuantity () >= 0
+                    && product.getQuantity () > 0 )
+                productOptional.get ().setQuantity ( productOptional.get().getQuantity () + product.getQuantity ());
+
+            if (product.getMinQuantity () >= 0
+                    || product.getName () != null)
+                productOptional.get ().setMinQuantity ( product.getMinQuantity ());
 
             productRepository.save ( productOptional.get() );
+
             Message message = new Message ();
             message.setState ( "Success" );
             message.setMessage ( "Product up to date" );
             productOptional.get ().setMessage ( message );
+
             return productOptional.get ();
         } else {
             Message message = new Message ();
             message.setMessage ( "Product is not exists" );
             message.setState ( "Error" );
             product.setMessage ( message );
+
             return product;
         }
 
     }
 
-    public Integer deleteProduct ( Long id ) {
+    public Message deleteProduct ( Long id ) {
+        Message message = new Message (  );
         Boolean exists = productRepository.existsById(id);
         if(!exists)
         {
-            return -1;
-            //throw new IllegalStateException("this Product number:"+ id +" does not exist");
+            message.setState ( "Info" );
+            message.setMessage ( "Product is not exists in the stock" );
+
+            return message;
         } else {
             try {
                 productRepository.deleteById(id);
-                return 1;
+                message.setState ( "Success" );
+                message.setMessage ( "Prodact has ben deleted" );
+
+                return message;
             } catch (Exception e){
-                return 0;
+                message.setState ( "Error" );
+                message.setMessage ( "Exception : " + e.toString () );
+
+                return message;
             }
         }
     }

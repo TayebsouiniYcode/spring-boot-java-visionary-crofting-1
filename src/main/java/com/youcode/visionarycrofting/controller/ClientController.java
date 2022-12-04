@@ -21,6 +21,7 @@ private final ClientService clientService;
     public ClientController(ClientService clientService) {
         this.clientService = clientService;
     }
+
     @GetMapping("/Clients")
     @ResponseBody
     public List<Client> getClients()

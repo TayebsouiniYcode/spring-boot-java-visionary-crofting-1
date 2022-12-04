@@ -81,5 +81,5 @@ public class ProductController {
 
     @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public Integer deleteProduct(@PathVariable Long id){ return productService.deleteProduct(id);}
+    public Message deleteProduct(@PathVariable Long id){ return productService.deleteProduct(id);}
 }
