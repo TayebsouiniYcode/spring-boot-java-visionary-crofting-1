@@ -115,46 +115,22 @@ public class ProductService {
         }
     }
 
-
-
-
-    /*
-    public Product updateProduct ( Product product ) {
-        Optional<Product> productOptional = productRepository.findById ( product.getId () );
-
-        productOptional.ifPresentOrElse ( (product1 -> {
-            product1.setId ( product.getId ( ) );
-
-            if (!product.getName ().isEmpty ()) product1.setName ( product.getName () );
-            if (!product.getDescription ().isEmpty ()) product1.setDescription ( product.getDescription () );
-            if (!product.getCategory ().isEmpty ()) product1.setCategory ( product.getCategory () );
-
-            if (product.getQuantity () > 0 && product.getQuantity () != null ) {
-                if (product1.getQuantity () != null) {
-                    product1.setQuantity ( product.getQuantity () );
-                } else {
-                    product1.setQuantity ( product1.getQuantity ( ) + product.getQuantity ( ) );
-                }
-            }
-
-            if (product.getUnitaryPrice () > 0) product1.setUnitaryPrice ( product.getUnitaryPrice () );
-            if (!product.getProductReference ().isEmpty ()) product1.setProductReference ( product.getProductReference () );
-            if (product.getMinQuantity () > 0) product1.setMinQuantity ( product.getMinQuantity () );
-
-            productRepository.save ( product1  );
-        }) ,
-                () -> {
-                    System.out.println ("ERROR Product not exists" );
-                });
-
-
-        return product;
-    }
-    */
-
     public Product getProductByReference(String reference){
-        Product product =  productRepository.getProductByProductReference(reference);
-        return product;
+        Message message = new Message ();
+        Optional<Product> productOptional =  productRepository.findProductByProductReference (reference);
+
+        if (productOptional.isPresent ()){
+            message.setState ( "Success" );
+            message.setMessage ( "Product details is present" );
+            productOptional.get ().setMessage ( message );
+            return productOptional.get ();
+        } else {
+            message.setState ( "Error" );
+            message.setMessage ( "Product reference is not exists" );
+            Product product = new Product (  );
+            product.setMessage ( message );
+            return product;
+        }
     }
 
     public Product addProductInStock(Product product, Stock stock) {
