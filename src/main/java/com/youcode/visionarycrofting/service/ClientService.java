@@ -103,8 +103,6 @@ public class ClientService {
          return clientUpdated;
     }
 
-
-
     public Client addCommand(Command command, Long id) {
         Optional<Client> clientOptional=clientRepository.findById(id);
         clientOptional.get().setCommand(command);

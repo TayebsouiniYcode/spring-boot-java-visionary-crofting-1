@@ -46,7 +46,6 @@ private final ClientService clientService;
         return clientService.deleteClient(clientId);
     }
 
-
     @PutMapping(path = "/updateClient")
     public Client updateClient(@RequestBody Client client)
 

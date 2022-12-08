@@ -10,8 +10,9 @@ import java.util.List;
 @Entity
 @Table
 public class Client implements Serializable {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
@@ -19,20 +20,16 @@ public class Client implements Serializable {
     private String phone;
     private String address;
 
-
     @OneToMany (mappedBy = "client", fetch = FetchType.EAGER)
     private List<Command> commandList;
 
-
     public Client(Long id, String name, String email, String password, String phone, String address) {
         this.id = id;
-
         this.name = name;
         this.email = email;
         this.password = password;
         this.phone = phone;
         this.address = address;
-
     }
 
     public Client(String name, String email, String password, String phone, String address) {
@@ -112,7 +109,7 @@ public class Client implements Serializable {
     }
 
 
-    @Override
+
     public String toString ( ) {
         return "Client{" +
                 "id=" + id +
