@@ -19,8 +19,8 @@ public class InvoiceController {
         this.invoiceService = invoiceService;
     }
 
-    @GetMapping("/")
-    public List<Invoice> getInvoice(){return invoiceService.getInvoices();}
+    //@GetMapping("/")
+    //public List<Invoice> getInvoice(){return invoiceService.getInvoices();}
 
     @PostMapping("/insert")
     public void addInvoice(@RequestBody Invoice invoice)

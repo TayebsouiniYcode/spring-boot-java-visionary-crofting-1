@@ -5,21 +5,26 @@ import com.youcode.visionarycrofting.entity.Client;
 import com.youcode.visionarycrofting.entity.Product;
 import com.youcode.visionarycrofting.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping(path = "api/v1/product")
+@Controller
 public class ProductController {
     @Autowired
     ProductService productService;
 
+    @RequestMapping(path="/", method=RequestMethod.GET)
+    public String index() {
+        return "home";
+    }
 
     //public ProductController ( ProductService productService ) {
     //    this.productService = productService;
     //}
-
+    /*
     @GetMapping("/products")
     @ResponseBody
     public List < Product > getClients()
@@ -72,14 +77,15 @@ public class ProductController {
             return productService.addProduct(product);
         } else return product;
     }
+    */
 
-    @PutMapping("/updateproduct")
-    @ResponseBody
-    public Product updateProduct(@RequestBody Product product) {
-        return productService.updateProduct(product);
-    }
+    //@PutMapping("/updateproduct")
+    //@ResponseBody
+    //public Product updateProduct(@RequestBody Product product) {
+    //    return productService.updateProduct(product);
+    //}
 
-    @DeleteMapping("/delete/{id}")
-    @ResponseBody
-    public Message deleteProduct(@PathVariable Long id){ return productService.deleteProduct(id);}
+    //@DeleteMapping("/delete/{id}")
+    //@ResponseBody
+    //public Message deleteProduct(@PathVariable Long id){ return productService.deleteProduct(id);}
 }
