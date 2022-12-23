@@ -2,6 +2,7 @@ package com.youcode.visionarycrofting.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.youcode.visionarycrofting.classes.Message;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table
+@Data
 public class Client implements Serializable {
 
     @Id

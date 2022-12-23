@@ -17,7 +17,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.Security;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -60,13 +59,11 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                     response.sendError ( FORBIDDEN.value () );
                     Map <String, String> error = new HashMap <> (  );
                     error.put ( "error_message", e.getMessage () );
-
                     response.setContentType ( APPLICATION_JSON_VALUE );
                     new ObjectMapper (  ).writeValue ( response.getOutputStream (), error );
                 }
-
             } else {
-
+                filterChain.doFilter ( request, response );
             }
         }
     }

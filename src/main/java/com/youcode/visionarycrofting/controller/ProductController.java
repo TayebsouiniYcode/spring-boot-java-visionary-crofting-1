@@ -1,38 +1,29 @@
 package com.youcode.visionarycrofting.controller;
 
 import com.youcode.visionarycrofting.classes.Message;
-import com.youcode.visionarycrofting.entity.Client;
 import com.youcode.visionarycrofting.entity.Product;
 import com.youcode.visionarycrofting.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/v1/product")
 public class ProductController {
-    @Autowired
     ProductService productService;
 
-    @RequestMapping(path="/", method=RequestMethod.GET)
-    public String index() {
-        return "home";
+    public ProductController ( ProductService productService ) {
+        this.productService = productService;
     }
 
-    //public ProductController ( ProductService productService ) {
-    //    this.productService = productService;
-    //}
-    /*
     @GetMapping("/products")
     @ResponseBody
-    public List < Product > getClients()
+    public List < Product > getProducts()
     {
         return productService.getProducts();
     }
 
-    @PostMapping("/addProduct")
+    @PostMapping("/add")
     @ResponseBody
     public Product addProduct(@RequestBody Product product) {
         boolean isValide = true;
@@ -77,15 +68,14 @@ public class ProductController {
             return productService.addProduct(product);
         } else return product;
     }
-    */
 
-    //@PutMapping("/updateproduct")
-    //@ResponseBody
-    //public Product updateProduct(@RequestBody Product product) {
-    //    return productService.updateProduct(product);
-    //}
+    @PutMapping("/update")
+    @ResponseBody
+    public Product updateProduct(@RequestBody Product product) {
+        return productService.updateProduct(product);
+    }
 
-    //@DeleteMapping("/delete/{id}")
-    //@ResponseBody
-    //public Message deleteProduct(@PathVariable Long id){ return productService.deleteProduct(id);}
+    @DeleteMapping("/delete/{id}")
+    @ResponseBody
+    public Message deleteProduct(@PathVariable Long id){ return productService.deleteProduct(id);}
 }

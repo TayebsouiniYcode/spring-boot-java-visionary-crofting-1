@@ -17,7 +17,7 @@ public class ClientConfi {
             Client client1=new Client("jamal","jamal@gmail.com","PASS132","0634483769","YOUSOUFIA");
 
             Client client=new Client("Mohamed","MOhamed@gmail.com","PASS132","0634483769","YOUSOUFIA");
-           clientRepository.saveAll(List.of(client1,client));
+            clientRepository.saveAll(List.of(client1,client));
         };
     }
 }

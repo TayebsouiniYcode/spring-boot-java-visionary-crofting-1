@@ -43,10 +43,11 @@ public class VisionarycroftingApplication {
 			userService.addRoleToUSer ( "Tayeb", "ROLE_ADMIN" );
 			userService.addRoleToUSer ( "Tayeb", "ROLE_SUPER_ADMIN" );
 
-
 			userService.addRoleToUSer ( "Jamal", "ROLE_USER" );
 			userService.addRoleToUSer ( "Jamal", "ROLE_ADMIN" );
 			userService.addRoleToUSer ( "Jamal", "ROLE_PROVIDER" );
+
+			userService.addRoleToUSer ( "Nouhaila", "ROLE_USER" );
 		};
 	}
 }

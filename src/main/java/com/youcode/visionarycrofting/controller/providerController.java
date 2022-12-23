@@ -10,34 +10,33 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "visionarycrofting/Provider")
+@RequestMapping(path = "/api/v1/provider")
 public class providerController {
-
     private final ProviderService providerService;
 
     public providerController(ProviderService providerService) {
         this.providerService = providerService;
     }
 
-    @GetMapping("/Providers")
+    @GetMapping("/providers")
     public List<Provider> getProviders()
     {
        return providerService.getProviders();
     }
 
-    @PostMapping("/addProvider")
+    @PostMapping("/add")
     public void addProvider(@RequestBody Provider provider)
     {
         providerService.addProvider(provider);
     }
 
-    @DeleteMapping("/deleteProvider/{providerId}")
+    @DeleteMapping("/delete/{providerId}")
     public Message deleteProvider( @PathVariable("providerId") Long providerId )
     {
         return providerService.deleteProvider(providerId);
     }
 
-    @PutMapping("/updateProvider")
+    @PutMapping("/update")
     @ResponseBody
     public Provider updateProvider(@RequestBody Provider provider)
     {
@@ -45,7 +44,7 @@ public class providerController {
         return provider;
     }
 
-    @PutMapping ("/validateInvoice/{id}")
+    @PutMapping ("/invoice/validate/{id}")
     public Optional < Product > validateInvoice( @PathVariable("id") Long id)
     {
         return providerService.validateInvoice(id);

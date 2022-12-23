@@ -5,6 +5,7 @@ import com.youcode.visionarycrofting.classes.PasserCommande;
 import com.youcode.visionarycrofting.entity.Client;
 import com.youcode.visionarycrofting.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -12,39 +13,41 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/client")
+@RequestMapping(path = "/api/v1")
 public class ClientController {
 
     @Autowired
     private ClientService clientService;
 
-    @RequestMapping(path = "/getAll", method = RequestMethod.GET)
+    @GetMapping("/clients")
     @ResponseBody
-    public List<Client> getClients() { return clientService.getClients();}
+    public ResponseEntity<List<Client>> getClients() {
+        return ResponseEntity.ok ().body ( clientService.getClients() );
+    }
 
-    @RequestMapping(path = "/get/{id}", method = RequestMethod.GET)
+    @GetMapping("/client/{id}")
     public Optional<Client> getOne(@PathVariable("id") Long clientId){
         return clientService.getOneById(clientId);
     }
 
-    @RequestMapping(path = "/add", method = RequestMethod.POST)
+    @PostMapping("/add")
     public Client registerNewClient(@RequestBody Client client)
     {
         return clientService.addClient(client);
     }
 
-    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/delete/{id}")
     public Message deleteClient( @PathVariable("id") Long clientId)
     { return clientService.deleteClient(clientId); }
 
-    @RequestMapping(path = "/update", method = RequestMethod.PUT)
+    @PutMapping("/update")
     public Client updateClient(@RequestBody Client client)
 
     {
         return clientService.updateClient(client);
     }
 
-    @RequestMapping(path = "/order/{id}", method = RequestMethod.POST)
+    @PostMapping("/passercommand/{id}")
     @ResponseBody
     public Client passerCommande(@PathVariable Long idClient,@RequestBody Collection<PasserCommande> productList)
     { return clientService.passerCommande(idClient, productList); }

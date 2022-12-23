@@ -10,17 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/visionarycrofting/invoice")
+@RequestMapping(path = "/api/v1/invoice")
 public class InvoiceController {
-    @Autowired
     private final InvoiceService invoiceService;
 
     public InvoiceController(InvoiceService invoiceService) {
         this.invoiceService = invoiceService;
     }
-
-    //@GetMapping("/")
-    //public List<Invoice> getInvoice(){return invoiceService.getInvoices();}
 
     @PostMapping("/insert")
     public void addInvoice(@RequestBody Invoice invoice)
@@ -35,11 +31,8 @@ public class InvoiceController {
     }
 
     @PutMapping("/update/{invoiceId}")
-    public void updateProvider(@PathVariable("invoiceId") Long invoiceId,
-                               @RequestBody Invoice invoice
-    )
+    public void updateProvider(@PathVariable("invoiceId") Long invoiceId, @RequestBody Invoice invoice )
     {
-
         invoiceService.updateInvoice(invoiceId , invoice);
     }
 }
