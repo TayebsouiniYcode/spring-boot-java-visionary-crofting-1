@@ -1,6 +1,6 @@
-package com.youcode.visionarycrofting.controller;
+package com.youcode.visionarycrofting.rest;
 
-import com.youcode.visionarycrofting.classes.Message;
+import com.youcode.visionarycrofting.util.Message;
 import com.youcode.visionarycrofting.entity.Product;
 import com.youcode.visionarycrofting.entity.Provider;
 import com.youcode.visionarycrofting.service.ProviderService;

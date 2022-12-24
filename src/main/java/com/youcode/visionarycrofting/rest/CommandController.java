@@ -1,4 +1,4 @@
-package com.youcode.visionarycrofting.controller;
+package com.youcode.visionarycrofting.rest;
 
 
 import com.youcode.visionarycrofting.entity.Command;

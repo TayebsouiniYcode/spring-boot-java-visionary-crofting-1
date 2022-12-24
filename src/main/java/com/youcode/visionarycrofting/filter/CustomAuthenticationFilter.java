@@ -29,11 +29,13 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     private final AuthenticationManager authenticationManager;
 
     public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
+        System.out.println ("thid is customAuth constructor " );
         this.authenticationManager = authenticationManager;
     }
 
     @Override
     public Authentication attemptAuthentication ( HttpServletRequest request , HttpServletResponse response ) throws AuthenticationException {
+        System.out.println ("this is atempt Authentication" );
         String username = request.getParameter ( "username" );
         String password = request.getParameter ( "password" );
         log.info("Username is : {}", username);
@@ -44,6 +46,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
     @Override
     protected void successfulAuthentication ( HttpServletRequest request , HttpServletResponse response , FilterChain chain , Authentication authentication ) throws IOException, ServletException {
+        System.out.println ("this is successfulAuthentication method in CustomAth" );
         User user = (User) authentication.getPrincipal ();
         Algorithm algorithm = Algorithm.HMAC256 ( "secret".getBytes( ) );
         String access_token = JWT.create ( )
@@ -52,6 +55,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .withIssuer ( request.getRequestURL ().toString () )
                 .withClaim ( "roles", user.getAuthorities ().stream ().map ( GrantedAuthority::getAuthority ).collect( Collectors.toList () ))
                 .sign ( algorithm );
+        System.out.println ("this is access token" + access_token );
         String refresh_token = JWT.create ( )
                 .withSubject ( user.getUsername () )
                 .withExpiresAt ( new Date (System.currentTimeMillis () + 30 * 60 * 1000) )

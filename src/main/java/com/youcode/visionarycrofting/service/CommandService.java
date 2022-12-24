@@ -1,17 +1,15 @@
 package com.youcode.visionarycrofting.service;
 
-import com.youcode.visionarycrofting.classes.Message;
-import com.youcode.visionarycrofting.classes.PasserCommande;
+import com.youcode.visionarycrofting.util.Message;
+import com.youcode.visionarycrofting.util.PasserCommande;
 import com.youcode.visionarycrofting.entity.Client;
 import com.youcode.visionarycrofting.entity.Command;
-import com.youcode.visionarycrofting.entity.CommandItem;
 import com.youcode.visionarycrofting.repository.ClientRepository;
 import com.youcode.visionarycrofting.repository.CommandItemRepository;
 import com.youcode.visionarycrofting.repository.CommandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.attribute.standard.MediaSize;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.*;

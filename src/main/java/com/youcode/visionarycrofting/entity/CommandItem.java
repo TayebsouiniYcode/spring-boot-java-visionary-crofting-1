@@ -1,7 +1,7 @@
 package com.youcode.visionarycrofting.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.youcode.visionarycrofting.classes.Message;
+import com.youcode.visionarycrofting.util.Message;
 
 import javax.persistence.*;
 

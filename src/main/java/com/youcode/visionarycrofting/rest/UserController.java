@@ -1,10 +1,9 @@
-package com.youcode.visionarycrofting.controller;
+package com.youcode.visionarycrofting.rest;
 
-import com.youcode.visionarycrofting.classes.RoleToUserForm;
-import com.youcode.visionarycrofting.domain.Role;
-import com.youcode.visionarycrofting.domain.User;
+import com.youcode.visionarycrofting.util.RoleToUserForm;
+import com.youcode.visionarycrofting.entity.Role;
+import com.youcode.visionarycrofting.entity.User;
 import com.youcode.visionarycrofting.service.UserService;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,5 +40,4 @@ public class UserController {
         userService.addRoleToUSer ( form.getUsername ( ) , form.getRoleName ( ) );
         return ResponseEntity.ok ().build ( );
     }
-
 }

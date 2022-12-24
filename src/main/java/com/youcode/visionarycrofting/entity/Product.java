@@ -1,13 +1,11 @@
 package com.youcode.visionarycrofting.entity;
 
 
-import com.youcode.visionarycrofting.classes.Message;
-import org.hibernate.Hibernate;
+import com.youcode.visionarycrofting.util.Message;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Product {

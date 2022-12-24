@@ -1,8 +1,8 @@
 package com.youcode.visionarycrofting.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.youcode.visionarycrofting.classes.Message;
+import com.youcode.visionarycrofting.util.Message;
 import lombok.Data;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -35,7 +35,6 @@ public class Client implements Serializable {
     }
 
     public Client(String name, String email, String password, String phone, String address) {
-
         this.name = name;
         this.email = email;
         this.password = password;

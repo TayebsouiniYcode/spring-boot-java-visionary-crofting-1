@@ -1,8 +1,7 @@
-package com.youcode.visionarycrofting.controller;
+package com.youcode.visionarycrofting.rest;
 
 
 import com.youcode.visionarycrofting.entity.CommandItem;
-import com.youcode.visionarycrofting.entity.Product;
 import com.youcode.visionarycrofting.service.CommandItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,8 +1,8 @@
 package com.youcode.visionarycrofting.service;
 
 
-import com.youcode.visionarycrofting.classes.AppelDoffre;
-import com.youcode.visionarycrofting.classes.Message;
+import com.youcode.visionarycrofting.util.AppelDoffre;
+import com.youcode.visionarycrofting.util.Message;
 import com.youcode.visionarycrofting.entity.Invoice;
 import com.youcode.visionarycrofting.entity.Product;
 import com.youcode.visionarycrofting.entity.Provider;
@@ -18,7 +18,6 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 @Service
 public class StockService {

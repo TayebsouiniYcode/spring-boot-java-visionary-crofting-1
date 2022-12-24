@@ -1,4 +1,4 @@
-package com.youcode.visionarycrofting.classes;
+package com.youcode.visionarycrofting.util;
 
 import lombok.Data;
 

@@ -1,7 +1,7 @@
 package com.youcode.visionarycrofting.service;
 
-import com.youcode.visionarycrofting.domain.Role;
-import com.youcode.visionarycrofting.domain.User;
+import com.youcode.visionarycrofting.entity.Role;
+import com.youcode.visionarycrofting.entity.User;
 
 import java.util.List;
 

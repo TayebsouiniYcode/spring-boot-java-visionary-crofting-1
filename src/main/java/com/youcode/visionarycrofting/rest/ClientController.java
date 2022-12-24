@@ -1,7 +1,7 @@
-package com.youcode.visionarycrofting.controller;
+package com.youcode.visionarycrofting.rest;
 
-import com.youcode.visionarycrofting.classes.Message;
-import com.youcode.visionarycrofting.classes.PasserCommande;
+import com.youcode.visionarycrofting.util.Message;
+import com.youcode.visionarycrofting.util.PasserCommande;
 import com.youcode.visionarycrofting.entity.Client;
 import com.youcode.visionarycrofting.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;

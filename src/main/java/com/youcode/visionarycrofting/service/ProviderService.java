@@ -1,8 +1,7 @@
 package com.youcode.visionarycrofting.service;
 
 
-import com.youcode.visionarycrofting.classes.Message;
-import com.youcode.visionarycrofting.entity.Client;
+import com.youcode.visionarycrofting.util.Message;
 import com.youcode.visionarycrofting.entity.Invoice;
 import com.youcode.visionarycrofting.entity.Product;
 import com.youcode.visionarycrofting.entity.Provider;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 @Service
 public class ProviderService {

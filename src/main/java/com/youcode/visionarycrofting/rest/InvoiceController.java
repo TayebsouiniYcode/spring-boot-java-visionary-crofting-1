@@ -1,13 +1,9 @@
-package com.youcode.visionarycrofting.controller;
+package com.youcode.visionarycrofting.rest;
 
 
 import com.youcode.visionarycrofting.entity.Invoice;
-import com.youcode.visionarycrofting.entity.Stock;
 import com.youcode.visionarycrofting.service.InvoiceService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/invoice")

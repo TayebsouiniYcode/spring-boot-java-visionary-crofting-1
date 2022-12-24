@@ -32,9 +32,12 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal ( HttpServletRequest request , HttpServletResponse response , FilterChain filterChain ) throws ServletException, IOException {
+        System.out.println ("this is dofilterInternal method" );
         if (request.getServletPath ().equals ( "/api/login" )){
+            System.out.println ("this is equal /api/login" );
             filterChain.doFilter ( request, response );
         } else {
+            System.out.println ("this is else equal /api/login" );
             String authorizationHeader = request.getHeader ( AUTHORIZATION );
             if (authorizationHeader != null && authorizationHeader.startsWith ( "Bearer " )) {
                 try {
@@ -63,6 +66,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                     new ObjectMapper (  ).writeValue ( response.getOutputStream (), error );
                 }
             } else {
+                System.out.println ("this is else filterChain" );
                 filterChain.doFilter ( request, response );
             }
         }

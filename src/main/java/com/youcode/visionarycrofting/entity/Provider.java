@@ -1,10 +1,9 @@
 package com.youcode.visionarycrofting.entity;
 
-import com.youcode.visionarycrofting.classes.Message;
+import com.youcode.visionarycrofting.util.Message;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.lang.reflect.Member;
 
 
 @Entity

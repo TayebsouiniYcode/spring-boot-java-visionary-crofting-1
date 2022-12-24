@@ -1,6 +1,6 @@
 package com.youcode.visionarycrofting.service;
 
-import com.youcode.visionarycrofting.classes.Message;
+import com.youcode.visionarycrofting.util.Message;
 import com.youcode.visionarycrofting.entity.Command;
 import com.youcode.visionarycrofting.entity.CommandItem;
 import com.youcode.visionarycrofting.entity.Product;

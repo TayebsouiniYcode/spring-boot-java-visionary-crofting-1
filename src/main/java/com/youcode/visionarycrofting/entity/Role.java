@@ -1,4 +1,4 @@
-package com.youcode.visionarycrofting.domain;
+package com.youcode.visionarycrofting.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
