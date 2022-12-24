@@ -41,6 +41,7 @@
 
             http.csrf ().disable ();
             http.sessionManagement ().sessionCreationPolicy ( STATELESS );
+            http.authorizeRequests ().antMatchers ( "/api/v1/auth/login" ).permitAll ();
             http.authorizeRequests ().antMatchers ( "/api/login/**", "/").permitAll ();
             http.authorizeRequests ().antMatchers (GET, "/api/v1/user/**").hasAnyAuthority ( "ROLE_USER" );
             http.authorizeRequests ().antMatchers (POST, "/api/v1/user/save/**").hasAnyAuthority ( "ROLE_ADMIN" );
